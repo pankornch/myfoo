@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.js"
+        integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+
+    <div class="container my-4">
+
+        <div class="card">
+            <div class="card-header">
+                <h3 class="text-center">
+                    ตรวจสอบสังกัดเวียง
+                </h3>
+            </div>
+            <div class="card-body">
+                <form action="/" method="POST">
+                    <div class="form-group">
+                        <lable>กรอกรหัสนิสิตของคุณ</lable>
+                        <input type="text" name="userid" class="form-control">
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">ตรวจสอบข้อมูล</button>
+                </form>
+                <% if(data) { %>
+
+                <table class="table-responsive">
+                    <thead class="thead-dark">
+                        <tr>
+                            <td>รหัสนิสิต</td>
+                            <td>ชื่อ-สกุล</td>
+                            <td>คณะ</td>
+                            <td>สาขา</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><%= data.user[0] %></td>
+                            <td><%= data.user[1] %></td>
+                            <td><%= data.user[2] %></td>
+                            <td><%= data.user[3] %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size: 30px;" class="text-center my-4"><%= `สังกัด : ${data.member} ${data.num}` %>
+                    <a class="text-decoration-none badge badge-success"
+                        href="/confirm/userid=<%= data.user[0] %>&name=<%= data.user[1] %>&major=<%= data.user[2] %>&program=<%= data.user[3] %>">
+                        ยืนยัน</a>
+                </p>
+
+
+                <% } %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
